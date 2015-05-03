@@ -57,7 +57,7 @@ public class PlayerOne : MonoBehaviour {
 //		int attackEnd = this.attackEnd;
 //		int SkillDamage;
 		SkillDamage = (Random.Range(this.attackStart, this.attackEnd))*5;
-		this.special -= 20;
+		this.special -= 25;
 		this.updateSlider();
 		this.hasAttacked = true;
 		this.playAttackAnim();

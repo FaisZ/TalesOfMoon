@@ -7,6 +7,7 @@ public class MainScene : MonoBehaviour {
 	public UFOEnemy UFOenemy;
 	public GameObject enemybody; 
 	public GameObject playerbody; 
+	public GameObject BurstButton;
 	public GameObject SkillMenu;
 	public GameObject ItemMenu;
 	public GameObject question;
@@ -17,15 +18,18 @@ public class MainScene : MonoBehaviour {
 	private bool isShowing;
 	private bool isShowingSkill;
 	private bool isShowingItem;
+//	private bool isShowingBurst;
 
 	// Use this for initialization
 	void Start () {
 		this.enemyDestroyed = false;
 		this.potionDeployed = false;
 		this.question.SetActive(false);
+		this.BurstButton.SetActive(false);
 		this.SkillMenu.SetActive(false);
 		this.ItemMenu.SetActive(false);
 		this.isShowingSkill = false;
+//		this.isShowingBurst = false;
 		this.isShowing = false;
 	}
 
@@ -96,9 +100,9 @@ public class MainScene : MonoBehaviour {
 			int attackEnd = this.playerOne.attackEnd;
 			Attack = Random.Range(attackStart, attackEnd);
 			this.UFOenemy.health -= Attack;
-			this.UFOenemy.updateSlider();
 			this.playerOne.hasAttacked = true;
 			this.playerOne.playAttackAnim();
+			this.UFOenemy.updateSlider();
 		}
 	}
 	
@@ -147,17 +151,51 @@ public class MainScene : MonoBehaviour {
 			int Attack = Random.Range(attackStart, attackEnd);
 			this.playerOne.health -= Attack;
 			this.playerOne.burst += (Attack*50)/this.playerOne.maxHealth;
+//			this.playerOne.burst += 100;
 			this.UFOenemy.playAttackAnim();
 			this.playerOne.updateSlider();
 			if (this.playerOne.burst == 100)
 			{
-				this.playerOne.burst = 0;
-				this.playerOne.updateSlider();
-				this.UFOenemy.health -= 200;
-				this.playerOne.playAttackAnim();
-				this.UFOenemy.updateSlider();
+//				this.isShowingBurst = true;
+//				this.BurstButton.SetActive(this.isShowingBurst);
+				this.BurstButton.SetActive(true);
 			}
 			this.playerOne.hasAttacked = false;
+		}
+
+	}
+
+	public void BurstMode()
+	{
+		Debug.Log ("Burst Show");
+		if (this.isShowingItem == true)
+		{
+			this.isShowingItem = false;
+			this.ItemMenu.SetActive(this.isShowingItem);
+		}
+		else if (this.isShowingSkill == true)
+		{
+			this.isShowingSkill = false;
+			this.SkillMenu.SetActive(this.isShowingSkill);
+		}
+		
+		if (this.playerDestroyed == false && this.UFOenemy.attackPlayed() == false && this.enemyDestroyed == false) 
+		{
+			this.BurstButton.SetActive(false);
+			this.playerOne.burst = 0;
+			this.playerOne.updateSlider();
+			this.UFOenemy.health -= 200;
+			this.playerOne.playAttackAnim();
+			this.UFOenemy.updateSlider();
+			//			Debug.Log ("Burst Show");
+//			if (this.isShowingBurst == true)
+//			{
+//				this.isShowingBurst = false;
+//				this.BurstButton.SetActive(this.isShowingBurst);
+//			}
+//			this.isShowingItem = !this.isShowingItem;
+//			this.ItemMenu.SetActive(this.isShowingItem);
+			//			this.checkSkill();
 		}
 
 	}
