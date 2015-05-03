@@ -7,18 +7,22 @@ public class MainScene : MonoBehaviour {
 	public UFOEnemy UFOenemy;
 	public GameObject enemybody; 
 	public GameObject playerbody; 
+	public GameObject SkillMenu;
 	public GameObject question;
 	public bool enemyDestroyed;
 	public bool playerDestroyed;
 	public bool potionDeployed;
 	public bool questionAsked;
 	private bool isShowing;
+	private bool isShowingSkill;
 
 	// Use this for initialization
 	void Start () {
 		this.enemyDestroyed = false;
 		this.potionDeployed = false;
 		this.question.SetActive(false);
+		this.SkillMenu.SetActive(false);
+		this.isShowingSkill = false;
 		this.isShowing = false;
 	}
 
@@ -31,6 +35,18 @@ public class MainScene : MonoBehaviour {
 			this.isShowing = !this.isShowing;
 			this.question.SetActive(this.isShowing);
 			this.checkAttack();
+		}
+	}
+
+	public void openSkill()
+	{
+		Debug.Log ("Skill opened");
+		if (this.playerDestroyed == false && this.playerOne.hasAttacked == false && this.UFOenemy.attackPlayed() == false && this.enemyDestroyed == false) 
+		{
+			Debug.Log ("Skill opened");
+			this.isShowingSkill = !this.isShowingSkill;
+			this.SkillMenu.SetActive(this.isShowingSkill);
+//			this.checkSkill();
 		}
 	}
 
@@ -50,22 +66,17 @@ public class MainScene : MonoBehaviour {
 		}
 	}
 	
-	public void checkSkill()
+//	public void checkSkill_Power_Slash()
+	public void checkSkill_Power_Slash(int SkillDamage)
 	{
 		Debug.Log ("Skill!");
-		int Attack;
-		if (this.playerOne.special != 0 && this.playerDestroyed == false && this.playerOne.hasAttacked == false && this.UFOenemy.attackPlayed() == false && this.enemyDestroyed == false) 
-		{
-			int attackStart = this.playerOne.attackStart;
-			int attackEnd = this.playerOne.attackEnd;
-			Attack = Random.Range(attackStart, attackEnd);
-			this.UFOenemy.health -= Attack*5;
-			this.playerOne.special -= 20;
-			this.playerOne.updateSlider();
+//		SkillDamage *= SkillDamage;
+//		if (this.playerDestroyed == false && this.playerOne.hasAttacked == false && this.UFOenemy.attackPlayed() == false && this.enemyDestroyed == false) 
+//		{
+			this.UFOenemy.health -= SkillDamage;
+			Debug.Log ("Damage: " + SkillDamage);
 			this.UFOenemy.updateSlider();
-			this.playerOne.hasAttacked = true;
-			this.playerOne.playAttackAnim();
-		}
+//		}
 	}
 	
 	public void addHealth()

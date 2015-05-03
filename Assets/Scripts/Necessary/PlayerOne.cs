@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerOne : MonoBehaviour {
 
+//	public UFOEnemy UFOenemy;
 	public int health;
 	public int special;
 	public int burst;
@@ -47,6 +48,21 @@ public class PlayerOne : MonoBehaviour {
 		this.healthBarSlider.value = 1.0f;
 		this.specialBarSlider.value = 1.0f;
 		this.burstBarSlider.value = 0.0f;
+	}
+
+	public int Skill_Power_Slash()
+	{
+		int attackStart = this.attackStart;
+		int attackEnd = this.attackEnd;
+		int SkillDamage;
+		SkillDamage = (Random.Range(attackStart, attackEnd))*5;
+//		this.UFOenemy.health -= SkillDamage*5;
+		this.special -= 20;
+		this.updateSlider();
+//		this.UFOenemy.updateSlider();
+		this.hasAttacked = true;
+		this.playAttackAnim();
+		return(SkillDamage);
 	}
 
 	public void playAttackAnim()

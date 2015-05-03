@@ -10,6 +10,6 @@ public class ButtonSkill : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnMouseDown() {
-		this.mainScene.checkSkill();
+		this.mainScene.openSkill();
 	}
 }
