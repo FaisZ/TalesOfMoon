@@ -74,7 +74,9 @@ public class MainScene : MonoBehaviour {
 //		if (this.playerDestroyed == false && this.playerOne.hasAttacked == false && this.UFOenemy.attackPlayed() == false && this.enemyDestroyed == false) 
 //		{
 			this.UFOenemy.health -= SkillDamage;
-			Debug.Log ("Damage: " + SkillDamage);
+//			Debug.Log ("Damage: " + SkillDamage);
+			this.isShowingSkill = !this.isShowingSkill;
+			this.SkillMenu.SetActive(this.isShowingSkill);
 			this.UFOenemy.updateSlider();
 //		}
 	}
