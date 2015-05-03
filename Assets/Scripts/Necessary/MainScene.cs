@@ -8,6 +8,7 @@ public class MainScene : MonoBehaviour {
 	public GameObject enemybody; 
 	public GameObject playerbody; 
 	public GameObject SkillMenu;
+	public GameObject ItemMenu;
 	public GameObject question;
 	public bool enemyDestroyed;
 	public bool playerDestroyed;
@@ -15,6 +16,7 @@ public class MainScene : MonoBehaviour {
 	public bool questionAsked;
 	private bool isShowing;
 	private bool isShowingSkill;
+	private bool isShowingItem;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +24,7 @@ public class MainScene : MonoBehaviour {
 		this.potionDeployed = false;
 		this.question.SetActive(false);
 		this.SkillMenu.SetActive(false);
+		this.ItemMenu.SetActive(false);
 		this.isShowingSkill = false;
 		this.isShowing = false;
 	}
@@ -44,16 +47,49 @@ public class MainScene : MonoBehaviour {
 		if (this.playerDestroyed == false && this.playerOne.hasAttacked == false && this.UFOenemy.attackPlayed() == false && this.enemyDestroyed == false) 
 		{
 			Debug.Log ("Skill opened");
+			if (this.isShowingItem == true)
+			{
+				this.isShowingItem = false;
+				this.ItemMenu.SetActive(this.isShowingItem);
+			}
 			this.isShowingSkill = !this.isShowingSkill;
 			this.SkillMenu.SetActive(this.isShowingSkill);
-//			this.checkSkill();
+				//			this.checkSkill();
 		}
 	}
-
+	
+	public void openItem()
+	{
+		Debug.Log ("Item opened");
+		if (this.playerDestroyed == false && this.playerOne.hasAttacked == false && this.UFOenemy.attackPlayed() == false && this.enemyDestroyed == false) 
+		{
+			Debug.Log ("Item opened");
+			if (this.isShowingSkill == true)
+			{
+				this.isShowingSkill = false;
+				this.SkillMenu.SetActive(this.isShowingSkill);
+			}
+			this.isShowingItem = !this.isShowingItem;
+			this.ItemMenu.SetActive(this.isShowingItem);
+			//			this.checkSkill();
+		}
+	}
+	
 	public void checkAttack()
 	{
 		Debug.Log ("Serang!");
 		int Attack;
+		if (this.isShowingItem == true)
+		{
+			this.isShowingItem = false;
+			this.ItemMenu.SetActive(this.isShowingItem);
+		}
+		else if (this.isShowingSkill == true)
+		{
+			this.isShowingSkill = false;
+			this.SkillMenu.SetActive(this.isShowingSkill);
+		}
+
 		if (this.playerDestroyed == false && this.playerOne.hasAttacked == false && this.UFOenemy.attackPlayed() == false && this.enemyDestroyed == false) 
 		{
 			int attackStart = this.playerOne.attackStart;
@@ -67,7 +103,7 @@ public class MainScene : MonoBehaviour {
 	}
 	
 //	public void checkSkill_Power_Slash()
-	public void checkSkill_Power_Slash(int SkillDamage)
+	public void checkSkill(int SkillDamage)
 	{
 		Debug.Log ("Skill!");
 //		SkillDamage *= SkillDamage;
@@ -95,6 +131,8 @@ public class MainScene : MonoBehaviour {
 				this.playerOne.hasAttacked = true;
 				this.potionDeployed = true;
 				this.playerOne.potion -= 1;
+				this.isShowingItem = !this.isShowingItem;
+				this.ItemMenu.SetActive(this.isShowingItem);
 
 			}
 		}

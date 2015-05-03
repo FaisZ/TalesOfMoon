@@ -22,6 +22,7 @@ public class PlayerOne : MonoBehaviour {
 	public int MattackEnd;
 	public bool hasAttacked;
 	public int potion;
+	public int SkillDamage;
 	Animator animator;
 
 	// Use this for initialization
@@ -52,19 +53,32 @@ public class PlayerOne : MonoBehaviour {
 
 	public int Skill_Power_Slash()
 	{
-		int attackStart = this.attackStart;
-		int attackEnd = this.attackEnd;
-		int SkillDamage;
-		SkillDamage = (Random.Range(attackStart, attackEnd))*5;
-//		this.UFOenemy.health -= SkillDamage*5;
+//		int attackStart = this.attackStart;
+//		int attackEnd = this.attackEnd;
+//		int SkillDamage;
+		SkillDamage = (Random.Range(this.attackStart, this.attackEnd))*5;
 		this.special -= 20;
 		this.updateSlider();
-//		this.UFOenemy.updateSlider();
 		this.hasAttacked = true;
 		this.playAttackAnim();
 		return(SkillDamage);
 	}
-
+	
+	public int Skill_Absorb()
+	{
+//		int attackStart = this.MattackStart;
+//		int attackEnd = this.MattackEnd;
+		SkillDamage = (Random.Range(this.MattackStart, MattackEnd))*5;
+		this.special -= 30;
+		this.updateSlider();
+		this.health += SkillDamage;
+		if(this.health > this.maxHealth)
+			this.health = this.maxHealth;
+		this.hasAttacked = true;
+		this.playAttackAnim();
+		return(SkillDamage);
+	}
+	
 	public void playAttackAnim()
 	{
 		animator.SetBool("Attack", true); 
