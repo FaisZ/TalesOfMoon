@@ -4,20 +4,31 @@ using UnityEngine.UI;
 
 public class UFOEnemy : MonoBehaviour {
 
+	public int level;
 	public int health;
 	public int maxHealth;
 	public Slider enemyHealthBar;
+	public int Atk, Def, MAtk, MDef, Spd;
 	public int attackStart;
 	public int attackEnd;
+	public int MattackStart;
+	public int MattackEnd;
 	public bool hasAttacked;
 	Animator animator;
 
 	// Use this for initialization
 	void Start () {
-		this.health = 500;
-		this.maxHealth = 500;
-		this.attackStart = 10;
-		this.attackEnd = 20;
+		this.maxHealth = 100 +((level-1)*Random.Range(40,50));
+		this.Atk = 10+((level-1)*Random.Range(3,5));
+		this.Def = 9+((level-1)*Random.Range(3,5));
+		this.MAtk = 6+((level-1)*Random.Range(2,4));
+		this.MDef = 9+((level-1)*Random.Range(2,4));
+		this.Spd = 8+((level-1)*Random.Range(4,6));
+		this.health = maxHealth;
+		this.attackStart = Atk-2;
+		this.attackEnd = Atk+2;
+		this.MattackStart = MAtk-2;
+		this.MattackEnd = MAtk+2;
 		animator = this.GetComponent<Animator>();
 		this.enemyHealthBar.value = 1.0f;
 	}

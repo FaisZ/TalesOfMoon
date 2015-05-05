@@ -35,7 +35,7 @@ public class GameMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		audio.mute = togglebutt.isSpeakerOff;
+		GetComponent<AudioSource>().mute = togglebutt.isSpeakerOff;
 	}
 
 	void OnGUI(){
@@ -52,6 +52,7 @@ public class GameMenu : MonoBehaviour {
 				}
 				else
 				{
+//					AutoFade.LoadLevel(menubutt[i].LoadLevel, 1,1,Color.black);
 					Application.LoadLevel(menubutt[i].LoadLevel);
 				}
 			}

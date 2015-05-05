@@ -1,14 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Necessary\PlayerOne.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Necessary\GameOverButt.cs">
     <Files>
-      <File FileName="Assets\ButtonSkill.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Necessary\PlayerOne.cs" Line="54" Column="37" />
-      <File FileName="Assets\Scripts\Necessary\MainScene.cs" Line="64" Column="7" />
-      <File FileName="Assets\Scripts\Necessary\MainScene2.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Necessary\UFOEnemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Necessary\ButtonClick.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Necessary\ButtonPotion.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Necessary\MainScene.cs" Line="176" Column="3" />
+      <File FileName="Assets\Scripts\Necessary\MapButt1.cs" Line="16" Column="32" />
+      <File FileName="Assets\Scripts\Necessary\MapButt2.cs" Line="15" Column="32" />
+      <File FileName="Assets\Scripts\Necessary\MapButt3.cs" Line="18" Column="1" />
+      <File FileName="Assets\Scripts\Necessary\PlayerOne.cs" Line="43" Column="1" />
+      <File FileName="Assets\Scripts\Necessary\GameOverButt.cs" Line="15" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

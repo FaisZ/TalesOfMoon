@@ -5,13 +5,13 @@ using UnityEngine.UI;
 public class PlayerOne : MonoBehaviour {
 
 //	public UFOEnemy UFOenemy;
+	public int level;
 	public int health;
 	public int special;
 	public int burst;
 	public Slider healthBarSlider;
 	public Slider specialBarSlider;
 	public Slider burstBarSlider;
-	public int level;
 	public int maxHealth;
 	public int maxSpecial;
 	public int Atk, Def, MAtk, MDef, Spd;
@@ -27,22 +27,22 @@ public class PlayerOne : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.level = 1;
-		this.maxHealth = 92+(level*8);
-		this.maxSpecial = 95+(level*5);
-	    this.Atk = 10+(level*4);
-	    this.Def = 9+(level*3);
-		this.MAtk = 6+(level*2);
-		this.MDef = 9+(level);
-		this.Spd = 8+(level*2);
+//		this.level = 1;
+		this.maxHealth = 100 +((level-1)*Random.Range(40,50));
+		this.maxSpecial = 100 +((level-1)*Random.Range(30,50));
+		this.Atk = 10+((level-1)*Random.Range(3,5));
+		this.Def = 9+((level-1)*Random.Range(3,5));
+		this.MAtk = 6+((level-1)*Random.Range(2,4));
+		this.MDef = 9+((level-1)*Random.Range(2,4));
+		this.Spd = 8+((level-1)*Random.Range(4,6));
 		this.health = maxHealth;
 		this.special = maxSpecial;
 		this.burst = 0;
 		this.maxBurst = 100;
-		this.attackStart = Atk-5;
-		this.attackEnd = Atk+5;
-		this.MattackStart = MAtk-5;
-		this.MattackEnd = MAtk+5;
+		this.attackStart = Atk-2;
+		this.attackEnd = Atk+2;
+		this.MattackStart = MAtk-2;
+		this.MattackEnd = MAtk+2;
 		this.potion = 10;
 		this.hasAttacked = false;
 		animator = this.GetComponent<Animator>();
@@ -57,7 +57,7 @@ public class PlayerOne : MonoBehaviour {
 //		int attackEnd = this.attackEnd;
 //		int SkillDamage;
 		SkillDamage = (Random.Range(this.attackStart, this.attackEnd))*5;
-		this.special -= 20;
+		this.special -= 25;
 		this.updateSlider();
 		this.hasAttacked = true;
 		this.playAttackAnim();
