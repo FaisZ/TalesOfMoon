@@ -154,10 +154,14 @@ public class MainScene : MonoBehaviour {
 			if (Attack <= 0)
 				Attack = 1;
 			this.playerOne.health -= Attack;
+<<<<<<< HEAD
 			if (Attack >= this.playerOne.maxHealth) //kondisi jika damage > max health
 				this.playerOne.burst += 50;
 			else
 				this.playerOne.burst += (Attack*50)/this.playerOne.maxHealth;
+=======
+			this.playerOne.burst += (Attack*50)/this.playerOne.maxHealth;
+>>>>>>> 8126516ddf7b4af05dcc8578ef24f8100311f7fc
 //			this.playerOne.burst += 100;
 			this.UFOenemy.playAttackAnim();
 			this.playerOne.updateSlider();
@@ -191,7 +195,11 @@ public class MainScene : MonoBehaviour {
 			this.BurstButton.SetActive(false);
 			this.playerOne.burst = 0;
 			this.playerOne.updateSlider();
+<<<<<<< HEAD
 			this.UFOenemy.health -= 100;
+=======
+			this.UFOenemy.health -= 200;
+>>>>>>> 8126516ddf7b4af05dcc8578ef24f8100311f7fc
 			this.playerOne.playAttackAnim();
 			this.UFOenemy.updateSlider();
 			//			Debug.Log ("Burst Show");
